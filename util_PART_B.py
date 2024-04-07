@@ -7,7 +7,7 @@ def modified_model():
     model = models.resnet50(weights=ResNet50_Weights.IMAGENET1K_V1)
 
     for param in model.parameters():
-        param.requires_grad = False #
+        param.requires_grad = False # freeze
     model.fc.requires_grad = True
 
     model.fc = torch.nn.Linear(model.fc.in_features, 10)
